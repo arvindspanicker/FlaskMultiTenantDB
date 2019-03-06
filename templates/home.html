@@ -1,0 +1,12 @@
+<html>
+  <body>
+    <form method="POST">
+      <input type="text" name="title">
+      <input type="submit" value="Add">
+    </form>
+   <h1>Services</h1>
+   {% for service in services  %}
+      <p>{{ service.title }}</p>
+   {% endfor  %}
+  </body>
+</html>
