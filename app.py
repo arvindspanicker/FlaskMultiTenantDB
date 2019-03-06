@@ -21,8 +21,8 @@ database_file_2 = "sqlite:///{}".format(os.path.join(project_dir,"service_one_db
 
 # Configuring all the databases in sql alchemy binds
 app.config['SQLALCHEMY_BINDS'] = {
-	'amazon': database_file_1,
-	'other': database_file_2
+	'tenant1': database_file_1,
+	'tenant2': database_file_2
 }
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
