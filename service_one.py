@@ -9,7 +9,7 @@ from flask import redirect
 from flask import url_for
 from flask import jsonify
 
-from multitenant_db_setup import MultiTenantSQLAlchemy
+from models import db,Service_Model
 
 service_name = 'service_one'
 
@@ -33,8 +33,7 @@ app.config['SQLALCHEMY_BINDS'] = {
 }
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-
-db = MultiTenantSQLAlchemy(app)
+db.init_app(app)
 
 
 @app.before_request
@@ -51,14 +50,6 @@ def before_request():
 	# The below is not needed, only used for test purpose since the sqlite database needs to 
 	# be created initially
 	db.create_all()
-
-
-class Service_Model(db.Model):
-	__tablename__ = 'services_list'
-	title = db.Column(db.String(100), nullable=False,primary_key=True)
-
-	def serialize_service(self):
-		return {"title": self.title}
 
 
 @app.route("/<tenant_name>/", methods=["GET","POST"])
