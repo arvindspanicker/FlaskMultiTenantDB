@@ -10,5 +10,15 @@ Running
 
 
 Running on:
-http://localhost:5000/tenant1 
-http://localhost:5000/tenant2
+* For service-one
+ - http://0.0.0.0:5000/amazon 
+ - http://0.0.0.0:5000/others
+
+* For service-two
+ - http://0.0.0.0:3000/amazon 
+ - http://0.0.0.0:3000/others
+
+API Test Among two services
+* To test api calls between two of them, first enter data into respective services and tenants db.
+* Then http://0.0.0.0:5000/info/amazon/ - will call the service_two which is running on port 3000 and gets the tenant amazon details 
+* Similarly http://0.0.0.0:3000/info/amazon/ - will call the service_one which is running on port 5000 and gets the tenant amazon details
